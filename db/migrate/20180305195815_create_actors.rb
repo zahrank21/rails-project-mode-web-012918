@@ -6,7 +6,7 @@ class CreateActors < ActiveRecord::Migration[5.1]
       t.text :bio
       t.string :gender
       t.integer :age
-      t.date :dob
+      t.string :dob
       t.string :pob
 
       t.timestamps

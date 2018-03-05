@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180305204002) do
     t.text "bio"
     t.string "gender"
     t.integer "age"
-    t.date "dob"
+    t.string "dob"
     t.string "pob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
