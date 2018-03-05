@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  characters: MyText
+  cast: MyText
+  title: MyString
+  streamed_on: MyString
+  status: MyString
+  genres: MyString
+  episodes_ordered: 1
+  created_by: MyString
+  rating: 1.5
+
+two:
+  characters: MyText
+  cast: MyText
+  title: MyString
+  streamed_on: MyString
+  status: MyString
+  genres: MyString
+  episodes_ordered: 1
+  created_by: MyString
+  rating: 1.5

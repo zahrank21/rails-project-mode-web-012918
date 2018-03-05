@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  rating: 1.5
+  bio: MyText
+  gender: MyString
+  age: 1
+  dob: 2018-03-05
+  pob: MyString
+
+two:
+  name: MyString
+  rating: 1.5
+  bio: MyText
+  gender: MyString
+  age: 1
+  dob: 2018-03-05
+  pob: MyString

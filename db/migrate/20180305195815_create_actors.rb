@@ -1,0 +1,15 @@
+class CreateActors < ActiveRecord::Migration[5.1]
+  def change
+    create_table :actors do |t|
+      t.string :name
+      t.float :rating
+      t.text :bio
+      t.string :gender
+      t.integer :age
+      t.date :dob
+      t.string :pob
+
+      t.timestamps
+    end
+  end
+end
