@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180305204002) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
-    t.float "rating"
+    t.string "rating"
     t.text "bio"
     t.string "gender"
     t.integer "age"

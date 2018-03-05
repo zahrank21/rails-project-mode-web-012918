@@ -1,0 +1,6 @@
+<h1>All Actors</h1>
+<ul>
+  <% @actors.each do |actor| %>
+  <li><%= link_to actor.name, actor %></li>
+  <% end %>
+</ul>
