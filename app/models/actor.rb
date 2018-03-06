@@ -1,6 +1,8 @@
 class Actor < ApplicationRecord
   has_many :appearances
+  has_many :shows, through: :appearances
   has_many :user_actors
+  has_many :users, through: :user_actors
 
   validates :name, presence: true
   validates :bio, length: {minimum: 10}
