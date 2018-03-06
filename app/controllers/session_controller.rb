@@ -4,13 +4,16 @@ class SessionController < ApplicationController
   end
 
   def create
-    if !User.find_by(name: params[:user][:name])
-      redirect_to '/login'
+    @user = User.find_by(name: params[:user][:name])
+    if @user.authenticate(params[:user][:password])
+      login(@user.id)
+      redirect_to @user
     else
-      login(params[:user][:name])
-      redirect_to '/'
+      byebug
+      render :new
     end
   end
+
 
   def logout
     session.delete :user_id

@@ -3,6 +3,7 @@
 <%= form_for @user, :url => ({controller: 'session', action: 'create', method: 'post'}) do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %><br><br>
-password will go here
+<%= f.label :password, "Password" %>
+<%= f.password_field :password %>
 <%= f.submit "Login" %>
 <% end %>

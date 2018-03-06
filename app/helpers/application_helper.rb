@@ -1,7 +1,6 @@
 module ApplicationHelper
-  def login(user_name)
-    found_user = User.find_by(name: user_name)
-    session[:user_id] = found_user.id
+  def login(user_id)
+    session[:user_id] = user_id
   end
 
 
