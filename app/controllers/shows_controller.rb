@@ -5,7 +5,12 @@ class ShowsController < ApplicationController
   end
 
   def new
-    @show = Show.new
+    if logged_in?
+      @show = Show.new
+    else
+      redirect_to '/login'
+    end
+
   end
 
   def show

@@ -4,7 +4,11 @@ class ActorsController < ApplicationController
   end
 
   def new
-    @actor = Actor.new
+    if logged_in?
+      @actor = Actor.new
+    else
+      redirect_to '/login'
+    end
   end
 
   def show
