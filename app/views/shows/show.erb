@@ -12,8 +12,8 @@
 <h3>Created By: <%= @show.created_by %></h3>
 
 
-<%= button_to 'Delete Show', show_path(@show), :method => :delete %>
-
-<br>
-
-<%= button_to 'Edit Show', edit_show_path(@show), :method => :get %>
+<% if logged_in? %>
+  <%= button_to 'Follow', '/users/session[:user_id]/following', :method => :get%><br>
+  <%= button_to 'Edit Show', edit_show_path(@show), :method => :get %><br>
+  <%= button_to 'Delete Show', show_path(@show), :method => :delete %>
+<% end %>

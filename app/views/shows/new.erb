@@ -41,9 +41,9 @@
 <%= f.text_field :created_by %>
 <br>
 <br>
-<%= f.label :characters %>
+<%= f.label :characters %><br>
   <%Actor.all.each do |actor|%>
-    <input type="checkbox" name="show[actor_ids][]" id="<%= actor.id%>" value="<%=actor.id%>" <%='checked' if @show.actors.include?(actor) %>> <%=actor.name%></input>
+     <input type="checkbox" name="show[actor_ids][]" id="<%= actor.id%>" value="<%=actor.id%>" <%='checked' if @show.actors.include?(actor) %>> <%=actor.name%></input> 
   <%end%>
 
 <br>

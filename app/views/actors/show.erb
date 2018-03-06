@@ -11,6 +11,6 @@
 </ul>
 
 <% if logged_in? %>
-  <%= button_to 'Delete Actor', actor_path(@actor), :method => :delete %><br>
-  <%= button_to 'Edit Actor', edit_actor_path(@actor), :method => :get %>
+  <%= button_to 'Edit Actor', edit_actor_path(@actor), :method => :get %><br>
+  <%= button_to 'Delete Actor', actor_path(@actor), :method => :delete %>
 <% end %>

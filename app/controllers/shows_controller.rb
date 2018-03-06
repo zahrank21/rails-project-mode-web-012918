@@ -1,5 +1,5 @@
 class ShowsController < ApplicationController
-before_action :get_show, only: [:edit, :update, :destroy]
+before_action :get_show, only: [:update, :destroy]
 
   def index
     @shows = Show.all
@@ -34,10 +34,16 @@ before_action :get_show, only: [:edit, :update, :destroy]
   end
 
   def edit
-
+    if logged_in?
+      get_show
+    else
+      redirect_to '/login'
+    end
   end
-  
+
   def update
+    @show.actors.clear
+    @show.actor_ids=(params[:show][:actor_ids])
     if @show.update(get_params)
       redirect_to @show
     else
