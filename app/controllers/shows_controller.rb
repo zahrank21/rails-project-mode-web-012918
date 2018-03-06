@@ -16,7 +16,7 @@ class ShowsController < ApplicationController
     @show = Show.new(get_params)
     if @show.valid?
       @show.save
-      redirect_to actor_path(@show)
+      redirect_to show_path(@show)
     else
       render :new
     end

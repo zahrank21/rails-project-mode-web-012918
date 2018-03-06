@@ -3,7 +3,14 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">TVDB</a>
+
+      </i><a class="navbar-brand glyphicon glyphicon-home"  href="/"> TVDB</a>
+      <li class="active">
+        <% if logged_in? %>
+        <%= link_to 'Log Out', "/logout" %>
+        <% else %>
+        <%= link_to 'Log In', "/login" %>/<%= link_to 'Sign Up', "/users/new" %>
+        <% end %></li>
     </div>
   </div>
 </nav>
@@ -12,11 +19,6 @@
   <li class="active"><%= link_to 'Shows', shows_path %></li>
   <li class="active"><%= link_to 'New Actor', "/actors/new" %></li>
   <li class="active"><%= link_to 'New Show', "/shows/new" %></li>
-
-
-
-
-
 </ul>
 
 <html>

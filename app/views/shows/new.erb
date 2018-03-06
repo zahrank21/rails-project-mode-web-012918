@@ -1,0 +1,49 @@
+<h1>Create New Show</h1>
+
+<% if @show.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@show.errors.count, "error") %>
+      prohibited this show from being saved:
+    </h2>
+
+    <ul>
+    <% @show.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @show do |f|  %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<br>
+<br>
+<%= f.label :image %>
+<%= f.file_field :image, class: "form-control" %>
+<br>
+<br>
+<%= f.label :rating %>
+<%= f.number_field :rating %>
+<br>
+<br>
+<%= f.label :status  %>
+<%= f.select :status, options_for_select([["Running", "Running"], ["Ended", "Ended"]])%>
+<br>
+<br>
+<%= f.label :genres%>
+<%= f.select :genres, options_for_select([["Drama", "Drama"], ["Science-Fiction", "Science-Fiction"], ["Thriller", "Thriller"], ["Action", "Action"], ["Crime", "Crime"], ["Horror", "Horror"], ["Romance", "Romance"]]) %>
+<br>
+<br>
+<%= f.label :created_by, value: "Created By" %>
+<%= f.text_field :created_by %>
+<br>
+<br>
+<%= f.label :characters %>
+<%= f.collection_select :characters , Actor.all, :id, :name %>
+<br>
+<br>
+<%= f.submit %>
+<% end %>
