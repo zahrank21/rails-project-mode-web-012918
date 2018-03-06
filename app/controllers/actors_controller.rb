@@ -1,5 +1,5 @@
 class ActorsController < ApplicationController
-  before_action :get_actor, only: [:edit, :update, :destroy]
+  before_action :get_actor, only: [:update, :destroy]
   def index
     @actors = Actor.all
   end
@@ -31,7 +31,11 @@ class ActorsController < ApplicationController
   end
 
   def edit
-
+    if logged_in?
+      get_actor
+    else
+      redirect_to '/login'
+    end
   end
 
   def update
