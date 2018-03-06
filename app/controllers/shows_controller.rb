@@ -14,6 +14,7 @@ class ShowsController < ApplicationController
 
   def create
     @show = Show.new(get_params)
+    @show.actor_ids=(params[:show][:actor_ids])
     if @show.valid?
       @show.save
       redirect_to show_path(@show)
@@ -25,7 +26,7 @@ class ShowsController < ApplicationController
   private
 
   def get_params
-    params.require(:show).permit(:title, :characters, :cast, :status, :genres, :created_by, :image, :rating)
+    params.require(:show).permit(:title, :characters, :cast, :status, :genres, :created_by, :image, :rating, :actor_ids)
   end
 
 end

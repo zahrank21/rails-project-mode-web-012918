@@ -9,7 +9,6 @@ class SessionController < ApplicationController
       login(@user.id)
       redirect_to @user
     else
-      byebug
       render :new
     end
   end

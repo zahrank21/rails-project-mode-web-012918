@@ -22,7 +22,7 @@
 <br>
 <br>
 <%= f.label :image %>
-<%= f.file_field :image, class: "form-control" %>
+<%= f.text_field :image %>
 <br>
 <br>
 <%= f.label :rating %>
@@ -30,11 +30,11 @@
 <br>
 <br>
 <%= f.label :status  %>
-<%= f.select :status, options_for_select([["Running", "Running"], ["Ended", "Ended"]])%>
+<%= f.select :status, options_for_select([["Running", "Running"], ["Ended", "Ended"]]), :prompt => "Please Select"%>
 <br>
 <br>
 <%= f.label :genres%>
-<%= f.select :genres, options_for_select([["Drama", "Drama"], ["Science-Fiction", "Science-Fiction"], ["Thriller", "Thriller"], ["Action", "Action"], ["Crime", "Crime"], ["Horror", "Horror"], ["Romance", "Romance"]]) %>
+<%= f.select :genres, options_for_select([["Drama", "Drama"], ["Science-Fiction", "Science-Fiction"], ["Thriller", "Thriller"], ["Action", "Action"], ["Crime", "Crime"], ["Horror", "Horror"], ["Romance", "Romance"], ["Comedy", "Comedy"]]), :prompt => "Please Select" %>
 <br>
 <br>
 <%= f.label :created_by, value: "Created By" %>
@@ -42,7 +42,10 @@
 <br>
 <br>
 <%= f.label :characters %>
-<%= f.collection_select :characters , Actor.all, :id, :name %>
+  <%Actor.all.each do |actor|%>
+    <input type="checkbox" name="show[actor_ids][]" id="<%= actor.id%>" value="<%=actor.id%>" <%='checked' if @show.actors.include?(actor) %>> <%=actor.name%></input>
+  <%end%>
+
 <br>
 <br>
 <%= f.submit %>
