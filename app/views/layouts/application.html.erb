@@ -7,7 +7,7 @@
       </i><a class="navbar-brand glyphicon glyphicon-home"  href="/"> TVDB</a>
       <li class="active">
         <% if logged_in? %>
-        <%= link_to 'Log Out', "/logout" %>
+        <%= link_to 'Log Out', "/logout" %>   
         <% else %>
         <%= link_to 'Log In', "/login" %>/<%= link_to 'Sign Up', "/users/new" %>
         <% end %></li>

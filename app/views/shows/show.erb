@@ -6,7 +6,7 @@
 <h3>Characters: </h3>
 <ul>
   <% @show.actors.each do |actor| %>
-  <li><%=  actor.name %></li>
+  <li><%=  link_to actor.name, actor %></li>
   <% end %>
 </ul>
 <h3>Created By: <%= @show.created_by %></h3>
