@@ -5,20 +5,22 @@
     <div class="navbar-header">
 
       </i><a class="navbar-brand glyphicon glyphicon-home"  href="/"> TVDB</a>
-      <li class="active">
+      <div class="navbar-brand">
         <% if logged_in? %>
-        <%= link_to 'Log Out', "/logout" %>   
+          <%= link_to "My Profile", user_path(session[:user_id]) %> / <%= link_to 'Log Out', "/logout" %>
         <% else %>
-        <%= link_to 'Log In', "/login" %>/<%= link_to 'Sign Up', "/users/new" %>
-        <% end %></li>
+          <%= link_to 'Log In', "/login" %> / <%= link_to 'Sign Up', "/users/new" %>
+        <% end %></div>
     </div>
   </div>
 </nav>
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><%= link_to 'Actors', actors_path %></li>
   <li class="active"><%= link_to 'Shows', shows_path %></li>
-  <li class="active"><%= link_to 'New Actor', "/actors/new" %></li>
-  <li class="active"><%= link_to 'New Show', "/shows/new" %></li>
+  <% if logged_in? %>
+    <li class="active"><%= link_to 'New Actor', "/actors/new" %></li>
+    <li class="active"><%= link_to 'New Show', "/shows/new" %></li>
+  <% end %>
 </ul>
 
 <html>
