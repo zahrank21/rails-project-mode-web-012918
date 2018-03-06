@@ -1,4 +1,5 @@
 class ShowsController < ApplicationController
+before_action :get_show, only: [:edit, :update, :destroy]
 
   def index
     @shows = Show.all
@@ -32,10 +33,30 @@ class ShowsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+  
+  def update
+    if @show.update(get_params)
+      redirect_to @show
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @show.delete
+    redirect_to shows_path
+  end
+
   private
 
   def get_params
     params.require(:show).permit(:title, :characters, :cast, :status, :genres, :created_by, :image, :rating, :actor_ids)
   end
 
+  def get_show
+    @show = Show.find(params[:id])
+  end
 end
