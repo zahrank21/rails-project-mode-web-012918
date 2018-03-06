@@ -1,7 +1,27 @@
 <!DOCTYPE html>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">TVDB</a>
+    </div>
+  </div>
+</nav>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><%= link_to 'Actors', actors_path %></li>
+  <li class="active"><%= link_to 'Shows', shows_path %></li>
+  <li class="active"><%= link_to 'New Actor', "/actors/new" %></li>
+  <li class="active"><%= link_to 'New Show', "/shows/new" %></li>
+
+
+
+
+
+</ul>
+
 <html>
   <head>
-    <title>Tvdb</title>
+    <title>TVDB</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
