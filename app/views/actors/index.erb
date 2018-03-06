@@ -1,6 +1,8 @@
 <h1>All Actors</h1>
-<ul>
-  <% @actors.each do |actor| %>
+
+<% @actors.each do |actor| %>
+<div class="all_pictures">
+  <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture"></a>
   <li><%= link_to actor.name, actor %></li>
-  <% end %>
-</ul>
+</div>
+<% end %>

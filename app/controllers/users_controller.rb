@@ -22,6 +22,10 @@ class UsersController < ApplicationController
 
   end
 
+  def index
+    @users = User.all
+  end
+
   private
 
   def user_params
@@ -29,7 +33,11 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
 end

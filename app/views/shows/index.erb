@@ -1,6 +1,8 @@
 <h1>All Shows</h1>
-<ul>
+
   <% @shows.each do |show| %>
-  <li><%= link_to show.title, show %></li>
+  <div class="all_pictures">
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
+    <%= link_to show.title, show %>
+  </div>
   <% end %>
-</ul>

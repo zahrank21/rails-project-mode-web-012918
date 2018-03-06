@@ -8,13 +8,15 @@ class ActorsController < ApplicationController
   end
 
   def show
-    @actor = Actor.find(params[:id])
+    if Actor.exists?(params[:id])
+      @actor = Actor.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def create
-    byebug
     @actor = Actor.new(get_params)
-    @actor.image_path(get_params)
     if @actor.valid?
       @actor.save
       redirect_to actor_path(@actor)

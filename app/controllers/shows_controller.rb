@@ -9,7 +9,11 @@ class ShowsController < ApplicationController
   end
 
   def show
-    @show = Show.find(params[:id])
+    if Show.exists?(params[:id])
+      @show = Show.find(params[:id])
+    else
+      redirect_to '/'
+    end
   end
 
   def create
