@@ -6,7 +6,7 @@ before_action :get_show, only: [:update, :destroy]
   end
 
   def new
-    if logged_in?
+    if logged_in? && admin?
       @show = Show.new
     else
       redirect_to '/login'

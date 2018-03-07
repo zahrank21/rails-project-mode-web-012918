@@ -10,7 +10,7 @@
 <li>Place of Birth: <%=  @actor.pob %></li>
 </ul>
 
-<% if logged_in? %>
+<% if logged_in? && admin? %>
   <%= button_to 'Edit Actor', edit_actor_path(@actor), :method => :get %><br>
   <%= button_to 'Delete Actor', actor_path(@actor), :method => :delete %>
 <% end %>

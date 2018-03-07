@@ -5,7 +5,7 @@ class ActorsController < ApplicationController
   end
 
   def new
-    if logged_in?
+    if logged_in? && admin?
       @actor = Actor.new
     else
       redirect_to '/login'

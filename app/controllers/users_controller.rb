@@ -10,6 +10,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if params[:user][:admin_pin] == "1234"
+      @user.admin = true
+    end
     if @user.save
       login(@user.id)
       redirect_to @user
@@ -22,15 +25,21 @@ class UsersController < ApplicationController
 
   end
 
+  # def following
+  #   byebug
+  #   @user = User.find(session[:user_id])
+  #   redirect_to @user
+  # <%= form_for :url => {:controller => "users", :action => "/users/#{session[:user_id]}/following"} do |f| %>
+  #   <%= f.hidden_field name: "<%= @show.title %>" %>
+  #   <%= f.submit "Follow Show" %>
+  # <% end %><br>
+  # end
+
   def index
     @users = User.all
   end
 
-  def following
-    byebug
-    @user = User.find(session[:user_id])
-    redirect_to @user
-  end
+
 
   private
 

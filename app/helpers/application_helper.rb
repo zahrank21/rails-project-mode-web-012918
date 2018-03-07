@@ -16,4 +16,8 @@ module ApplicationHelper
       nil
     end
   end
+
+  def admin?
+    current_user.admin == true
+  end
 end

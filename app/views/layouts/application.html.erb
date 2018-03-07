@@ -17,7 +17,7 @@
 <ul class="nav nav-tabs" role="tablist">
   <li class="active"><%= link_to 'Actors', actors_path %></li>
   <li class="active"><%= link_to 'Shows', shows_path %></li>
-  <% if logged_in? %>
+  <% if logged_in? && admin? %>
     <li class="active"><%= link_to 'New Actor', "/actors/new" %></li>
     <li class="active"><%= link_to 'New Show', "/shows/new" %></li>
   <% end %>
