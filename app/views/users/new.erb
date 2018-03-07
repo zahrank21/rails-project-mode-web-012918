@@ -23,5 +23,7 @@
 <%= f.password_field :password %><br><br>
 <%= f.label :password_confirmation, "Confirm Password" %>
 <%= f.password_field :password_confirmation %>
+<%= f.label :admin%>
+<%= f.select :admin, options_for_select([["Yes", "Yes"], ["No", "No"]]), :prompt => "Please Select"  %>
 <%= f.submit %>
 <% end %>
