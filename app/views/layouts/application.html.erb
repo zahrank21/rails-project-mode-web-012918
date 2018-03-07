@@ -10,7 +10,14 @@
           <%= link_to "My Profile", user_path(session[:user_id]) %> / <%= link_to 'Log Out', "/logout" %>
         <% else %>
           <%= link_to 'Log In', "/login" %> / <%= link_to 'Sign Up', "/users/new" %>
-        <% end %></div>
+        <% end %>
+      </div>
+      <div class="navbar-brand">
+        <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search by Show or Actor" %>
+          <%= submit_tag "Search", :name => nil %>
+        <% end %>
+      </div>
     </div>
   </div>
 </nav>
@@ -28,7 +35,6 @@
   <head>
     <title>TVDB</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
