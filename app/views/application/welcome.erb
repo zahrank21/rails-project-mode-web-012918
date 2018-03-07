@@ -1,2 +1,22 @@
 
 <h1>Welcome to TVDB!</h1>
+
+<% if logged_in? %>
+  <h1>Shows For You:</h1>
+  <% Show.all.select do |show| %>
+    <% current_user.actors.each do |actor| %>
+    <% if show.actors.include?(actor)%>
+      <%= link_to show.title, show %>
+    <% end %>
+    <% end %>
+  <% end %>
+
+  <h1>Your Actors:</h1>
+  <% current_user.actors.each do |actor| %>
+  <%= link_to actor.name, actor %>
+  <% end %>
+
+  <h1>Recommendations:</h1>
+  <h2>Similar genres to your shows:</h2>
+
+<% end %>
