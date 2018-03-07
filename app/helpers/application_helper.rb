@@ -20,4 +20,15 @@ module ApplicationHelper
   def admin?
     current_user.admin == true
   end
+
+  def current_user?
+
+    if current_user
+      if current_user.id == params[:id].to_i
+        return true
+      end
+    end
+  end
+
+
 end

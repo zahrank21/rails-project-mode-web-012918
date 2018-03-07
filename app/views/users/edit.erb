@@ -1,0 +1,29 @@
+<h1>Edit User</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this show from being saved:
+    </h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @user do |f| %>
+<%= f.label :name %><br>
+<%= f.text_field :name %><br><br>
+<%= f.label :password, "Password" %><br>
+<%= f.password_field :password %><br><br>
+<%= f.label :password_confirmation, "Confirm Password" %><br>
+<%= f.password_field :password_confirmation %><br><br>
+<%= f.label :admin_pin, "Admin Pin" %><br>
+<%= f.password_field :admin_pin %><br><br>
+<%= f.submit %>
+<% end %>
