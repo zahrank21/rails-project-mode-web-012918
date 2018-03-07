@@ -11,6 +11,13 @@
 </ul>
 <h3>Created By: <%= @show.created_by %></h3>
 
+<% if logged_in? %>
+  <%= form_tag  "/users/#{session[:user_id]}/following", method: :post do %>
+    <div class="btn btn-primary">
+      <%= link_to "Follow", controller: "users", action: "following", show_id: @show.id, :class => "btn-outline-primary"  %>
+    </div>
+  <% end %>
+<% end %>
 
 <% if logged_in? && admin? %>
   <%= button_to 'Edit Show', edit_show_path(@show), :method => :get %><br>

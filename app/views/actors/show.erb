@@ -10,6 +10,14 @@
 <li>Place of Birth: <%=  @actor.pob %></li>
 </ul>
 
+<% if logged_in? %>
+  <%= form_tag  "/users/#{session[:user_id]}/following", method: :post do %>
+    <div class="btn btn-primary">
+      <%= link_to "Follow", controller: "users", action: "following", actor_id: @actor.id, :class => "btn-outline-primary"  %>
+    </div>
+  <% end %>
+<% end %>
+
 <% if logged_in? && admin? %>
   <%= button_to 'Edit Actor', edit_actor_path(@actor), :method => :get %><br>
   <%= button_to 'Delete Actor', actor_path(@actor), :method => :delete %>
