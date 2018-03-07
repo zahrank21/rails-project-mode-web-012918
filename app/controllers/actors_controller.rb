@@ -8,7 +8,7 @@ class ActorsController < ApplicationController
     if logged_in? && admin?
       @actor = Actor.new
     else
-      redirect_to '/login'
+      redirect_to '/'
     end
   end
 
@@ -31,10 +31,10 @@ class ActorsController < ApplicationController
   end
 
   def edit
-    if logged_in?
+    if logged_in? && admin?
       get_actor
     else
-      redirect_to '/login'
+      redirect_to '/'
     end
   end
 

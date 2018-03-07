@@ -9,7 +9,7 @@ before_action :get_show, only: [:update, :destroy]
     if logged_in? && admin?
       @show = Show.new
     else
-      redirect_to '/login'
+      redirect_to '/'
     end
 
   end
@@ -34,10 +34,10 @@ before_action :get_show, only: [:update, :destroy]
   end
 
   def edit
-    if logged_in?
+    if logged_in? && admin?
       get_show
     else
-      redirect_to '/login'
+      redirect_to '/'
     end
   end
 
