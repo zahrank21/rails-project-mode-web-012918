@@ -25,14 +25,24 @@ class UsersController < ApplicationController
 
   end
 
-  def following
+  def follow
     @user = User.find(session[:user_id])
     if params[:show_id]
-      add_show(@user, params[:show_id])
+      follow_show(params[:show_id])
     elsif params[:actor_id]
-      add_actor(@user, params[:actor_id])
+      follow_actor(params[:actor_id])
     end
     redirect_to @user
+   end
+
+   def unfollow
+     @user = User.find(session[:user_id])
+     if params[:show_id]
+       unfollow_show(params[:show_id])
+     elsif params[:actor_id]
+       unfollow_actor(params[:actor_id])
+     end
+     redirect_to @user
    end
 
   def index
