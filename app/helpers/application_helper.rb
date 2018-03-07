@@ -22,12 +22,26 @@ module ApplicationHelper
   end
 
   def current_user?
-
     if current_user
       if current_user.id == params[:id].to_i
         return true
       end
     end
+  end
+
+  def all_shows
+    user_shows = []
+    current_user.shows.each do |show|
+      user_shows << show
+    end
+    current_user.actors.each do |actor|
+      actor.shows.each do |show|
+        user_shows << show
+
+      end
+    end
+    user_shows.uniq!
+    return user_shows
   end
 
 

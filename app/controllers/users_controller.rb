@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     end
     if @user.save
       login(@user.id)
-      redirect_to @user
+      redirect_to '/'
     else
       render :new
     end
