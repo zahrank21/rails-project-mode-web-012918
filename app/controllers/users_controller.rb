@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
-  # include ApplicationHelper
+  include UsersHelper
 
 
   def new
@@ -25,15 +25,15 @@ class UsersController < ApplicationController
 
   end
 
-  # def following
-  #   byebug
-  #   @user = User.find(session[:user_id])
-  #   redirect_to @user
-  # <%= form_for :url => {:controller => "users", :action => "/users/#{session[:user_id]}/following"} do |f| %>
-  #   <%= f.hidden_field name: "<%= @show.title %>" %>
-  #   <%= f.submit "Follow Show" %>
-  # <% end %><br>
-  # end
+  def following
+    @user = User.find(session[:user_id])
+    if params[:show_id]
+      add_show(@user, params[:show_id])
+    elsif params[:actor_id]
+      add_actor(@user, params[:actor_id])
+    end
+    redirect_to @user
+   end
 
   def index
     @users = User.all
