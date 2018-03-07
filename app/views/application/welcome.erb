@@ -3,8 +3,8 @@
 
 <% if logged_in? %>
   <h1>Shows For You:</h1>
-  <% if all_shows != nil %>
-  <% all_shows.each do |show| %>
+  <% if current_user.all_shows != nil %>
+  <% current_user.all_shows.each do |show| %>
       <div class="all_pictures">
         <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
         <%= link_to show.title, show %>

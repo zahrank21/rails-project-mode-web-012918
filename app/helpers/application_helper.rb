@@ -29,20 +29,7 @@ module ApplicationHelper
     end
   end
 
-  def all_shows
-    user_shows = []
-    current_user.shows.each do |show|
-      user_shows << show
-    end
-    current_user.actors.each do |actor|
-      actor.shows.each do |show|
-        user_shows << show
 
-      end
-    end
-    user_shows.uniq!
-    return user_shows
-  end
 
 
 end
