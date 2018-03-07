@@ -1,7 +1,35 @@
 <h1><%= @user.name %></h1>
+
 <% if @user.admin? %>
 <h3>Admin</h3>
 <% end %>
+
+<h2>Following these actors: </h2>
+<% @user.actors.each do |actor| %>
+  <div class="all_pictures">
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture"></a>
+    <li><%= link_to actor.name, actor %></li>
+  </div>
+  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
+    <div class="btn btn-primary">
+      <%= link_to "Unfollow", controller: "users", action: "unfollow", actor_id: actor.id, :class => "btn-outline-secondary"  %>
+    </div>
+  <% end %>
+<% end %>
+
+<h2>Following these shows: </h2>
+<% @user.shows.each do |show| %>
+  <div class="all_pictures">
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
+    <%= link_to show.title, show %>
+  </div>
+  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
+    <div class="btn btn-primary">
+      <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: show.id, :class => "btn-outline-secondary"  %>
+    </div>
+  <% end %>
+<% end %>
+
 
 <% if (logged_in? && admin?) || (logged_in? && current_user?)  %>
   <%= button_to 'Edit User', edit_user_path(@user), :method => :get %><br>
