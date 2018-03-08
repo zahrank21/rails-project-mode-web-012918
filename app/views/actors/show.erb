@@ -1,7 +1,7 @@
 
 <h1> <%=  @actor.name %></h1>
 <ul>
-<img src="<%= @actor.image %>" alt="<%= @actor.name %> Picture">
+<img src="<%= @actor.image %>" alt="<%= @actor.name %> Picture" height="200" width="200">
 <li>Rating: <%=  @actor.rating %></li>
 <li>Biography: <%=  @actor.bio %></li>
 <li>Gender: <%= @actor.gender %></li>
@@ -9,6 +9,11 @@
 <li>Date of Birth: <%=  @actor.dob %></li>
 <li>Place of Birth: <%=  @actor.pob %></li>
 </ul>
+
+<h1>Starring in:</h1>
+<% @actor.shows.each do |show| %>
+<%= link_to show.title, show %>
+<% end %>
 
 <% if logged_in? && !following?(@actor) %>
   <%= form_tag  "/users/#{session[:user_id]}/follow", method: :post do %>

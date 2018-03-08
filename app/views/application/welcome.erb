@@ -1,20 +1,25 @@
 
 <h1>Welcome to TVDB!</h1>
+<h2>The Premier Television Database</h2>
 
 <% if logged_in? %>
   <h1>Shows For You:</h1>
-  <% if current_user.all_shows != nil %>
-  <% current_user.all_shows.each do |show| %>
-      <div class="all_pictures">
-        <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
-        <%= link_to show.title, show %>
-      </div>
+  <% Show.all.select do |show| %>
+    <% current_user.actors.each do |actor| %>
+    <% if show.actors.include?(actor)%>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="200"></a>
+      <%= link_to show.title, show %>
     <% end %>
     <% end %>
 <% end %>
 
 
 
+  <h1>Your Actors:</h1>
+  <% current_user.actors.each do |actor| %>
+  <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="200" width="200"></a>
+  <%= link_to actor.name, actor %>
+  <% end %>
 
   <h1>Recommendations:</h1>
   <h2>Similar genres to your shows:</h2>
