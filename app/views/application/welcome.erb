@@ -46,7 +46,7 @@
     <% current_user.all_shows.each do |show| %>
       <div class="col-xs-4">
         <h3><%= link_to show.title, show %></h3>
-        <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="150"></a>
+        <a href="<%= show_path(show) %>"><img src="<%= show.image %>" class= "img-rounded" alt="<%= show.title %> Picture" height="200" width="150"></a>
       </div>
     <% end %>
   </div>
