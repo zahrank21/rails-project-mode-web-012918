@@ -30,6 +30,7 @@ module ApplicationHelper
   end
 
   def user_genres
+<<<<<<< HEAD
     genres = []
     current_user.shows.each do |show|
       genres << shows.genres
@@ -37,5 +38,10 @@ module ApplicationHelper
   end
 
 
+=======
+    current_user.shows.map {|show| show.genres}
+  end
+
+>>>>>>> zahran-branch
 
 end

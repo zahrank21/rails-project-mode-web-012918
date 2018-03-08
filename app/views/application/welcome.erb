@@ -1,29 +1,64 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <h1>Welcome to TVDB!</h1>
 <h2>The Premier Television Database</h2>
+<div class="p-3 mb-2 bg-dark text-white"></div>
 
 <% if logged_in? %>
   <h1>Shows For You:</h1>
+  <div class="container testimonial-group">
+    <div class="row text-center">
   <% Show.all.select do |show| %>
     <% current_user.actors.each do |actor| %>
     <% if show.actors.include?(actor)%>
+    <div class="col-xs-4">
+    <h3><%= link_to show.title, show %></h3>
     <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="150"></a>
-      <%= link_to show.title, show %>
+    </div>
     <% end %>
     <% end %>
-    <% end %>
-<% end %>
-
+  <% end %>
+  </div>
+</div>
 
 
 
   <% if logged_in? %>
   <h1>Your Actors:</h1>
-  <% current_user.actors.each do |actor| %>
-  <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="200" width="200"></a>
-  <%= link_to actor.name, actor %>
-  <% end %>
+  <div class="container testimonial-group">
+    <div class="row text-center">
+    <% current_user.actors.each do |actor| %>
+      <div class="col-xs-4">
+        <h3><%= link_to actor.name, actor %></h3>
+        <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="200" width="200"></a>
+      </div>
+    <% end %>
+    </div>
+  </div>
+
+  <h1>Recommendations:</h1>
+  <h2>Similar genres to your shows:</h2>
+  <div class="container testimonial-group">
+    <div class="row text-center">
+  <% Show.all.each do |show| %>
+    <% if user_genres.include?(show.genres)%>
+    <div class="col-xs-4">
+      <h3><%= link_to show.title, show %></h3>
+      <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="150"></a>
+    </div>
+    <% end %>
+    </div>
+  </div>
   <% end %>
 
+<% end %>
 
-  
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<div class="container testimonial-group">
+  <div class="row text-center">
+    <div class="col-xs-4">1</div>
+
+  </div>
+</div>

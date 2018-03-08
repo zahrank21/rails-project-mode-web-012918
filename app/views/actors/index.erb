@@ -1,8 +1,15 @@
 <h1>All Actors</h1>
 
-<% @actors.each do |actor| %>
-  <div class="all_pictures">
-    <h3><%= link_to actor.name, actor %></h3>
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="200" width="200"></a>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<div class="container testimonial-group">
+  <div class="row text-center">
+  <% @actors.sort_by{|actor| actor.name}.each do |actor| %>
+    <div class="col-xs-4">
+      <div class="all_pictures">
+        <h3><%= link_to actor.name, actor %></h3>
+        <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="300" width="300"></a>
+      </div>
+    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
