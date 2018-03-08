@@ -31,11 +31,7 @@ class Show < ApplicationRecord
     self.save
   end
 
-  private
 
-  def build_ratings
-    self.build(ratings: [])
-  end
 
 
 end

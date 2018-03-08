@@ -3,6 +3,17 @@
 <ul>
 <img src="<%= @actor.image %>" alt="<%= @actor.name %> Picture" height="200" width="200">
 <li>Rating: <%=  @actor.rating %></li>
+<% if logged_in? %>
+  <%= form_for @actor, url: {controller: :actors, action: :rate} do |f| %>
+    <%= f.hidden_field :actor_id, value: @actor.id %>
+  1 <%= f.radio_button :rating, 1 %>
+  2 <%= f.radio_button :rating, 2 %>
+  3 <%= f.radio_button :rating, 3 %>
+  4 <%= f.radio_button :rating, 4 %>
+  5 <%= f.radio_button :rating, 5 %>
+  <%= f.submit "Rate" %>
+  <% end %>
+<% end %>
 <li>Biography: <%=  @actor.bio %></li>
 <li>Gender: <%= @actor.gender %></li>
 <li>Date of Birth: <%=  @actor.dob %></li>

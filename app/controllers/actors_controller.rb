@@ -22,6 +22,7 @@ class ActorsController < ApplicationController
 
   def create
     @actor = Actor.new(get_params)
+    @actor.ratings = []
     if @actor.valid?
       @actor.save
       redirect_to actor_path(@actor)
@@ -44,6 +45,14 @@ class ActorsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def rate
+    @actor = Actor.find(params[:actor][:actor_id].to_i)
+    if params[:actor][:rating] != nil
+      @actor.add_rating(params[:actor][:rating])
+    end
+    redirect_to @actor
   end
 
   def destroy
