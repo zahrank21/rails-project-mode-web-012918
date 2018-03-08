@@ -1,1 +1,22 @@
-<h1>No results found for "<%= params[:search] %>"</h1>
+<% if @found_shows.length > 0 && @found_actors.length > 0 %>
+  <% @found_shows.each do |show| %>
+    <%= link_to show.title, show %>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %>"></a>
+  <% end %>
+  <% @found_actors.each do |actor| %>
+    <%= link_to actor.name, actor %>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %>"></a>
+  <% end %>
+<% elsif @found_shows.length > 0 %>
+  <% @found_shows.each do |show| %>
+    <%= link_to show.title, show %>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %>"></a>
+  <% end %>
+<% elsif @found_actors.length > 0 %>
+  <% @found_actors.each do |actor| %>
+    <%= link_to actor.name, actor %>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %>"></a>
+  <% end %>
+<% else %>
+  <h1>No results found for "<%= params[:search] %>"</h1>
+<% end %>

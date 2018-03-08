@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   get '/users/:id/unfollow', to: "users#unfollow"
   get '/search', to: "application#search", as: "search"
   post '/show/rate', to: "shows#rate"
-  patch '/show//rate', to: "shows#rate"
-  # post '/users/:id/following', to: "users#following"
+  patch '/show/rate', to: "shows#rate"
+  post '/actor/rate', to: "actors#rate"
+  patch '/actor/rate', to: "actors#rate"
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

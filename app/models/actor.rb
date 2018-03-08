@@ -9,7 +9,17 @@ class Actor < ApplicationRecord
   validates :gender, presence: true, inclusion: {in: %w(Male Female Other)}
   validates :dob, presence: true
   validates :pob, presence: true
-  validates :rating, inclusion: {in: %w(0 1 2 3 4 5)}
 
+
+  def avg(ratings)
+    ratings.sum.to_f/ratings.length if ratings.length > 0
+  end
+
+  def add_rating(rating)
+    self.ratings << rating
+    numbers = self.ratings.split("").map {|rating| rating.to_i}
+    self.rating = avg(numbers).round(1)
+    self.save
+  end
 
 end
