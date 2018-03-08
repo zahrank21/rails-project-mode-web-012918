@@ -33,6 +33,17 @@
   <% end %>
 </ul>
 <h3>Created By: <%= @show.created_by %></h3>
+<% if logged_in? %>
+  <%= form_for @show, url: {controller: :shows, action: :rate} do |f| %>
+    <%= f.hidden_field :show_id, value: @show.id %>
+  1 <%= f.radio_button :rating, 1 %>
+  2 <%= f.radio_button :rating, 2 %>
+  3 <%= f.radio_button :rating, 3 %>
+  4 <%= f.radio_button :rating, 4 %>
+  5 <%= f.radio_button :rating, 5 %>
+  <%= f.submit "Rate" %>
+  <% end %>
+<% end %>
 
 
 

@@ -24,6 +24,7 @@ before_action :get_show, only: [:update, :destroy]
 
   def create
     @show = Show.new(get_params)
+    @show.ratings = []
     @show.actor_ids=(params[:show][:actor_ids])
     if @show.valid?
       @show.save
@@ -31,6 +32,14 @@ before_action :get_show, only: [:update, :destroy]
     else
       render :new
     end
+  end
+
+  def rate
+    @show = Show.find(params[:show][:show_id].to_i)
+    if params[:show][:rating] != nil
+      @show.add_rating(params[:show][:rating])
+    end
+    redirect_to @show
   end
 
   def edit
