@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <nav class="navbar navbar-default" role="navigation">
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
-
       </i><a class="navbar-brand glyphicon glyphicon-home"  href="/"> TVDB</a>
       <div class="navbar-brand">
         <% if logged_in? %>
@@ -22,7 +22,8 @@
     </div>
   </div>
 </nav>
-<ul class="nav nav-pills nav-justified">
+
+<ul class="nav nav-tabs ">
   <li class="active"><%= link_to 'Actors', actors_path %></li>
   <li class="active"><%= link_to 'Shows', shows_path %></li>
   <li class="active"><%= link_to 'Users', users_path %></li>

@@ -1,8 +1,15 @@
 <h1>All Shows</h1>
 
-  <% @shows.each do |show| %>
+
+<div class="container testimonial-group">
+  <div class="row text-center">
+  <% @shows.sort_by{|show| show.title}.each do |show| %>
+  <div class="col-xs-4">
     <div class="all_pictures">
       <h3><%= link_to show.title, show %></h3>
       <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="150"></a>
     </div>
+    </div>
   <% end %>
+</div>
+</div>
