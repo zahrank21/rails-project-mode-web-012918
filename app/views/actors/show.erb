@@ -1,8 +1,10 @@
 
+<br>
+<div class="container">
+  <div class="jumbotron">
 <h1> <%=  @actor.name %></h1>
-<ul>
-<img src="<%= @actor.image %>" alt="<%= @actor.name %> Picture" height="200" width="200">
-<li>Rating: <%=  @actor.rating %></li>
+<img src="<%= @actor.image %>" class= "img-rounded" alt="<%= @actor.name %> Picture" height="200" width="200">
+<h3>Rating: <%=  @actor.rating %></h3>
 <% if logged_in? %>
   <%= form_for @actor, url: {controller: :actors, action: :rate} do |f| %>
     <%= f.hidden_field :actor_id, value: @actor.id %>
@@ -14,23 +16,6 @@
   <%= f.submit "Rate" %>
   <% end %>
 <% end %>
-<li>Biography: <%=  @actor.bio %></li>
-<li>Gender: <%= @actor.gender %></li>
-<li>Date of Birth: <%=  @actor.dob %></li>
-<li>Place of Birth: <%=  @actor.pob %></li>
-</ul>
-
-<h1>Starring in:</h1>
-<% @actor.shows.each do |show| %>
-<%= link_to show.title, show %>
-<% end %>
-
-<br>
-<div class="container">
-  <div class="jumbotron">
-<h1> <%=  @actor.name %></h1>
-<img src="<%= @actor.image %>" class= "img-rounded" alt="<%= @actor.name %> Picture" height="200" width="200">
-<h3>Rating: <%=  @actor.rating %></h3>
 <% if logged_in? && !following?(@actor) %>
   <%= form_tag  "/users/#{session[:user_id]}/follow", method: :post do %>
     <div class="btn btn-success">
