@@ -1,6 +1,29 @@
-<h1> <%=  @show.title %></h1>
-<img src="<%= @show.image %>" alt="<%= @show.title %> picture">
-<h3>Rating: <%= @show.rating %></h3>
+
+
+<br>
+
+
+<div class="container">
+  <div class="jumbotron">
+    <h1><%=@show.title %></h1>
+    <img src="<%= @show.image %>" alt="<%= @show.title %> picture" height="200" width="150">
+    <h3>Rating: <%= @show.rating %></h3>
+
+    <% if logged_in? && !following?(@show) %>
+      <%= form_tag  "/users/#{session[:user_id]}/follow", method: :post do %>
+        <div class="btn btn-primary">
+          <%= link_to "Follow", controller: "users", action: "follow", show_id: @show.id, :class => "btn-outline-primary"  %>
+        </div>
+      <% end %>
+    <% elsif logged_in? && following?(@show) %>
+      <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
+        <div class="btn btn-primary">
+          <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: @show.id, :class => "btn-outline-secondary"  %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
+
 <h3>Status: <%= @show.status %></h3>
 <h3>Genre: <%= @show.genres %></h3>
 <h3>Characters: </h3>
@@ -11,19 +34,7 @@
 </ul>
 <h3>Created By: <%= @show.created_by %></h3>
 
-<% if logged_in? && !following?(@show) %>
-  <%= form_tag  "/users/#{session[:user_id]}/follow", method: :post do %>
-    <div class="btn btn-primary">
-      <%= link_to "Follow", controller: "users", action: "follow", show_id: @show.id, :class => "btn-outline-primary"  %>
-    </div>
-  <% end %>
-<% elsif logged_in? && following?(@show) %>
-  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
-    <div class="btn btn-primary">
-      <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: @show.id, :class => "btn-outline-secondary"  %>
-    </div>
-  <% end %>
-<% end %>
+
 
 <% if logged_in? && admin? %>
   <%= button_to 'Edit Show', edit_show_path(@show), :method => :get %><br>
