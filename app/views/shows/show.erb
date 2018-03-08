@@ -8,6 +8,18 @@
     <h1><%=@show.title %></h1>
     <img src="<%= @show.image %>" alt="<%= @show.title %> picture" height="200" width="150">
     <h3>Rating: <%= @show.rating %></h3>
+    <% if logged_in? %>
+      <%= form_for @show, url: {controller: :shows, action: :rate} do |f| %>
+        <%= f.hidden_field :show_id, value: @show.id %>
+      1 <%= f.radio_button :rating, 1 %>
+      2 <%= f.radio_button :rating, 2 %>
+      3 <%= f.radio_button :rating, 3 %>
+      4 <%= f.radio_button :rating, 4 %>
+      5 <%= f.radio_button :rating, 5 %>
+      <%= f.submit "Rate" %>
+      <% end %>
+    <% end %>
+    <br>
 
     <% if logged_in? && !following?(@show) %>
       <%= form_tag  "/users/#{session[:user_id]}/follow", method: :post do %>
@@ -27,24 +39,26 @@
 <h4><%= @show.description %></h4>
 <h3>Status: <%= @show.status %></h3>
 <h3>Genre: <%= @show.genres %></h3>
-<h3>Characters: </h3>
-<ul>
-  <% @show.actors.each do |actor| %>
-  <li><%=  link_to actor.name, actor %></li>
-  <% end %>
-</ul>
 <h3>Created By: <%= @show.created_by %></h3>
-<% if logged_in? %>
-  <%= form_for @show, url: {controller: :shows, action: :rate} do |f| %>
-    <%= f.hidden_field :show_id, value: @show.id %>
-  1 <%= f.radio_button :rating, 1 %>
-  2 <%= f.radio_button :rating, 2 %>
-  3 <%= f.radio_button :rating, 3 %>
-  4 <%= f.radio_button :rating, 4 %>
-  5 <%= f.radio_button :rating, 5 %>
-  <%= f.submit "Rate" %>
+
+<h3>Characters: </h3>
+<br>
+<div class="container testimonial-group">
+  <div class="row text-center">
+  <% @show.actors.each do |actor| %>
+  <div class="col-xs-4">
+  <img src="<%= actor.image %>" class="img-circle" alt="<%= actor.name %> picture" class="img-circle" height="200" width="200">
+  <h3><%=  link_to actor.name, actor %></h3>
+  </div>
   <% end %>
-<% end %>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
 
 
 

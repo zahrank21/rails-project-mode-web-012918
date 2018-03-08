@@ -1,32 +1,53 @@
 
+
+<br>
+<div class="container">
+  <div class="jumbotron">
 <h1> <%=  @actor.name %></h1>
-<ul>
-<img src="<%= @actor.image %>" alt="<%= @actor.name %> Picture" height="200" width="200">
-<li>Rating: <%=  @actor.rating %></li>
-<li>Biography: <%=  @actor.bio %></li>
-<li>Gender: <%= @actor.gender %></li>
-<li>Date of Birth: <%=  @actor.dob %></li>
-<li>Place of Birth: <%=  @actor.pob %></li>
-</ul>
-
-<h1>Starring in:</h1>
-<% @actor.shows.each do |show| %>
-<%= link_to show.title, show %>
-<% end %>
-
+<img src="<%= @actor.image %>" class= "img-rounded" alt="<%= @actor.name %> Picture" height="200" width="200">
+<h3>Rating: <%=  @actor.rating %></h3>
 <% if logged_in? && !following?(@actor) %>
   <%= form_tag  "/users/#{session[:user_id]}/follow", method: :post do %>
-    <div class="btn btn-primary">
+    <div class="btn btn-success">
       <%= link_to "Follow", controller: "users", action: "follow", actor_id: @actor.id, :class => "btn-outline-primary"  %>
     </div>
   <% end %>
 <% elsif logged_in? && following?(@actor) %>
   <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
-    <div class="btn btn-primary">
+    <div class="btn btn-danger">
       <%= link_to "Unfollow", controller: "users", action: "unfollow", actor_id: @actor.id, :class => "btn-outline-secondary"  %>
     </div>
   <% end %>
 <% end %>
+
+
+</div>
+<ul>
+<h4>Biography: <%=  @actor.bio %></h4>
+<h3>Gender: <%= @actor.gender %></h3>
+<h3>Date of Birth: <%=  @actor.dob %></h3>
+<h3>Place of Birth: <%=  @actor.pob %></h3>
+</ul>
+</div>
+
+<h1>Starring in:</h1>
+<br>
+<div class="container testimonial-group">
+  <div class="row text-center">
+<% @actor.shows.each do |show| %>
+<div class="col-xs-4">
+<img src="<%= show.image %>" class="img-circle" alt="<%= show.title %> picture" class="img-circle" height="200" width="150">
+<h3><%= link_to show.title, show %></h3>
+</div>
+<% end %>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
 
 
 <% if logged_in? && admin? %>
