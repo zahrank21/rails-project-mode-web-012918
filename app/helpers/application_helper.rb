@@ -29,6 +29,12 @@ module ApplicationHelper
     end
   end
 
+  def user_genres
+    genres = []
+    current_user.shows.each do |show|
+      genres << shows.genres
+    end
+  end
 
 
 

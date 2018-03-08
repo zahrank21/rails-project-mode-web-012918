@@ -7,12 +7,14 @@
 <h2>Following these actors: </h2>
 <% @user.actors.each do |actor| %>
   <div class="all_pictures">
-    <li><%= link_to actor.name, actor %></li>
+    <h3><%= link_to actor.name, actor %></h3>
     <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height= "200" width= "200"></a>
   </div>
+  <br>
+  <br>
   <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
     <div class="btn btn-primary">
-      <%= link_to "Unfollow", controller: "users", action: "unfollow", actor_id: actor.id, :class => "btn-outline-secondary"  %>
+      <%= link_to "Unfollow", controller: "users", action: "unfollow", actor_id: actor.id, :class => "btn-outline-primary"  %>
     </div>
   <% end %>
 <% end %>
@@ -21,8 +23,9 @@
 <% @user.shows.each do |show| %>
   <div class="all_pictures">
     <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
-    <%= link_to show.title, show %>
+    <h3><%= link_to show.title, show %></h3>
   </div>
+  <br>
   <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
     <div class="btn btn-primary">
       <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: show.id, :class => "btn-outline-secondary"  %>
