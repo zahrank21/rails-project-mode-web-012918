@@ -4,37 +4,52 @@
 <h3>Admin</h3>
 <% end %>
 
-<h2>Following these actors: </h2>
-<% @user.actors.each do |actor| %>
-  <div class="all_pictures">
-    <h3><%= link_to actor.name, actor %></h3>
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height= "200" width= "200"></a>
-  </div>
-  <br>
-  <br>
-  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
-    <div class="btn btn-primary">
-      <%= link_to "Unfollow", controller: "users", action: "unfollow", actor_id: actor.id, :class => "btn-outline-primary"  %>
-    </div>
-  <% end %>
-<% end %>
-
-<h2>Following these shows: </h2>
-<% @user.shows.each do |show| %>
-  <div class="all_pictures">
-    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
-    <h3><%= link_to show.title, show %></h3>
-  </div>
-  <br>
-  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
-    <div class="btn btn-primary">
-      <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: show.id, :class => "btn-outline-secondary"  %>
-    </div>
-  <% end %>
-<% end %>
-
-
 <% if (logged_in? && admin?) || (logged_in? && current_user?)  %>
   <%= button_to 'Edit User', edit_user_path(@user), :method => :get %><br>
   <%= button_to 'Delete User', user_path(@user), :method => :delete %>
 <% end %>
+
+<h2>Following these actors: </h2>
+<div class="container testimonial-group">
+  <div class="row text-center">
+<% @user.actors.each do |actor| %>
+  <div class="col-xs-4">
+  <div class="all_pictures">
+    <h3><%= link_to actor.name, actor %></h3>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class= "img-circle" alt="<%= actor.name %> Picture" height= "200" width= "200"></a>
+  </div>
+  <br>
+  <br>
+  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
+    <div class="btn btn-danger">
+      <%= link_to "Unfollow", controller: "users", action: "unfollow", actor_id: actor.id, :class => "btn-outline-primary"  %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+</div>
+</div>
+
+
+<h2>Following these shows: </h2>
+<br>
+<div class="container testimonial-group">
+  <div class="row text-center">
+<% @user.shows.each do |show| %>
+<div class="col-xs-4">
+  <div class="all_pictures">
+    <h3><%= link_to show.title, show %></h3>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" class= "img-rounded" alt="<%= show.title %> Picture"  height= "200" width= "150"></a>
+  </div>
+  <br>
+  <br>
+  <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
+    <div class="btn btn-danger">
+      <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: show.id, :class => "btn-outline-primary"  %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+</div>
+</div>
+<br>
