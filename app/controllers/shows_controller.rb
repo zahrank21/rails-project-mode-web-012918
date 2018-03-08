@@ -68,7 +68,7 @@ before_action :get_show, only: [:update, :destroy]
   private
 
   def get_params
-    params.require(:show).permit(:title, :characters, :cast, :status, :genres, :created_by, :image, :rating, :actor_ids)
+    params.require(:show).permit(:title, :characters, :cast, :status, :genres, :created_by, :image, :rating, :actor_ids, :description)
   end
 
   def get_show

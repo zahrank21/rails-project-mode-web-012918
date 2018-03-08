@@ -21,6 +21,10 @@
 <%= f.text_field :title %>
 <br>
 <br>
+<%= f.label :description %>
+<%= f.text_area :description, :cols => "50", :rows => "5" %>
+<br>
+<br>
 <%= f.label :image %>
 <%= f.text_field :image %>
 <br>
@@ -43,7 +47,7 @@
 <br>
 <%= f.label :characters %><br>
   <%Actor.all.each do |actor|%>
-     <input type="checkbox" name="show[actor_ids][]" id="<%= actor.id%>" value="<%=actor.id%>" <%='checked' if @show.actors.include?(actor) %>> <%=actor.name%></input> 
+     <input type="checkbox" name="show[actor_ids][]" id="<%= actor.id%>" value="<%=actor.id%>" <%='checked' if @show.actors.include?(actor) %>> <%=actor.name%></input>
   <%end%>
 
 <br>
