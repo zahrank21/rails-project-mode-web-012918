@@ -43,10 +43,13 @@
   </div>
   <br>
   <br>
+
+  <% if (logged_in? && admin?) || (logged_in? && current_user?)  %>
   <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
     <div class="btn btn-danger">
       <%= link_to "Unfollow", controller: "users", action: "unfollow", show_id: show.id, :class => "btn-outline-primary"  %>
     </div>
+  <% end %>
   <% end %>
   </div>
 <% end %>
