@@ -29,9 +29,7 @@ module ApplicationHelper
     end
   end
 
-  def user_genres
-    current_user.shows.map {|show| show.genres}
-  end
+  
 
 
 

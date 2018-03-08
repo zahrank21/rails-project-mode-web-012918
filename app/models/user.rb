@@ -13,4 +13,12 @@ class User < ApplicationRecord
   def all_shows
     (self.shows + self.actor_shows).uniq
   end
+
+  def user_genres
+    self.shows.map {|show| show.genres}
+  end
+
+  def not_following?(show)
+    !self.shows.include?(show)
+  end
 end
