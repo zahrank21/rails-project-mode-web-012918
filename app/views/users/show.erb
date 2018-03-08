@@ -7,8 +7,8 @@
 <h2>Following these actors: </h2>
 <% @user.actors.each do |actor| %>
   <div class="all_pictures">
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture"></a>
     <li><%= link_to actor.name, actor %></li>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height= "200" width= "200"></a>
   </div>
   <%= form_tag  "/users/#{session[:user_id]}/unfollow", method: :post do %>
     <div class="btn btn-primary">

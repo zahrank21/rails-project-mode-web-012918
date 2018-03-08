@@ -2,7 +2,7 @@
 
 <% @actors.each do |actor| %>
   <div class="all_pictures">
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture"></a>
-    <li><%= link_to actor.name, actor %></li>
+    <h3><%= link_to actor.name, actor %></h3>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="200" width="200"></a>
   </div>
 <% end %>

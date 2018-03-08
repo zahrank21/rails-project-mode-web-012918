@@ -2,7 +2,7 @@
 
   <% @shows.each do |show| %>
     <div class="all_pictures">
-      <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture"></a>
-      <%= link_to show.title, show %>
+      <h3><%= link_to show.title, show %></h3>
+      <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="150"></a>
     </div>
   <% end %>

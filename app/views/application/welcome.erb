@@ -1,11 +1,13 @@
 
 <h1>Welcome to TVDB!</h1>
+<h2>The Premier Television Database</h2>
 
 <% if logged_in? %>
   <h1>Shows For You:</h1>
   <% Show.all.select do |show| %>
     <% current_user.actors.each do |actor| %>
     <% if show.actors.include?(actor)%>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %> Picture" height="200" width="200"></a>
       <%= link_to show.title, show %>
     <% end %>
     <% end %>
@@ -13,6 +15,7 @@
 
   <h1>Your Actors:</h1>
   <% current_user.actors.each do |actor| %>
+  <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %> Picture" height="200" width="200"></a>
   <%= link_to actor.name, actor %>
   <% end %>
 
