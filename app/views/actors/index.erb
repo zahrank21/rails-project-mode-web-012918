@@ -10,7 +10,7 @@
   <% @actors.sort_by{|actor| actor.name}.each do |actor| %>
     <div class="col-xs-4">
       <div class="all_pictures">
-        <h3><%= link_to actor.name, actor %></h3>
+        <h4><%= link_to actor.name, actor %></h4>
         <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class="img-circle" alt="<%= actor.name %> Picture" height="300" width="300"></a>
       </div>
     </div>

@@ -63,7 +63,7 @@
     <div class="row text-center">
     <% current_user.actors.each do |actor| %>
       <div class="col-xs-4">
-        <h3><%= link_to actor.name, actor %></h3>
+        <h4><%= link_to actor.name, actor %></h4>
         <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class="img-circle" alt="<%= actor.name %> Picture" height="200" width="200"></a>
       </div>
     <% end %>
