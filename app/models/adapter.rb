@@ -1,42 +1,58 @@
 class Adapter
-
+ SHOWS = []
+ PEOPLE = []
   def self.shows_call
     page = 0
     url = "http://api.tvmaze.com/shows?page=#{page}"
     api = RestClient.get(url)
-    shows_array = []
-    while page < 5
+
+    while page < 3
       url = "http://api.tvmaze.com/shows?page=#{page}"
       api = RestClient.get(url)
       sub_array = JSON.parse(api)
-      shows_array << sub_array
+      SHOWS << sub_array
       page += 1
     end
-    shows_array.flatten!.each do |show|
-      Show.create(title: )
+  end
 
+  def self.create_shows
+    SHOWS.flatten.each do |show|
+      Show.create(title: show["name"], description: show["summary"], genres: show["genres"][0], status: show["status"], image: show["image"]["medium"], rating: show["rating"]["average"], ratings: "")
     end
-    binding.pry
+  end
+
+  def self.clear_shows
+    SHOWS.clear
+  end
+  def self.clear_people
+    PEOPLE.clear
   end
 
   def self.people_call
-    page = 1
+    page = 105
     url = "http://api.tvmaze.com/people/#{page}"
     api = RestClient.get(url)
-    while page < 80
+    while page < 180
       url = "http://api.tvmaze.com/people/#{page}"
       api = RestClient.get(url)
       person = JSON.parse(api)
-      people_array << person
-      puts page
+      if person["name"] && person["gender"] && person["birthday"] && person["country"]["name"] && person["image"]["medium"]
+        PEOPLE << person
+      end
       page += 1
     end
-    people_array.each do |actor|
-      Actor.create(name: actor[:name], gender: actor[:gender], dob: actor[:birthday], pob: actor[:country][:name], image: actor[:image][:medium])
+    PEOPLE[0..-1].each do |actor|
+      Actor.create(name: actor["name"], gender: actor["gender"], dob: actor["birthday"], pob: actor["country"]["name"], image: actor["image"]["medium"], ratings: "")
     end
-    binding.pry
   end
 
 
+
+  def self.create_people
+    byebug
+    PEOPLE.each do |actor|
+      Actor.create(name: actor[:name], gender: actor[:gender], dob: actor[:birthday], pob: actor[:country][:name], image: actor[:image][:medium], ratings: "")
+    end
+  end
 
 end

@@ -4,9 +4,9 @@ class Show < ApplicationRecord
   has_many :user_shows
   has_many :users, through: :user_shows
 
-  validates :title, presence: true, uniqueness: true
-  validates :status, inclusion: {in: %w(Ended Running)}
-  validates :genres, inclusion: {in: %w(Drama Science-Fiction Thriller Action Crime Horror Romance Comedy)}
+  # validates :title, presence: true, uniqueness: true
+  # validates :status, inclusion: {in: %w(Ended Running)}
+  # validates :genres, inclusion: {in: %w(Drama Science-Fiction Thriller Action Crime Horror Romance Comedy)}
 
 
 

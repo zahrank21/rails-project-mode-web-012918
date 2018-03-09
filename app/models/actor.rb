@@ -4,11 +4,11 @@ class Actor < ApplicationRecord
   has_many :user_actors
   has_many :users, through: :user_actors
 
-  validates :name, presence: true
-  validates :bio, length: {minimum: 10}
-  validates :gender, presence: true, inclusion: {in: %w(Male Female Other)}
-  validates :dob, presence: true
-  validates :pob, presence: true
+  # validates :name, presence: true
+  # validates :bio, length: {minimum: 10}
+  # validates :gender, presence: true, inclusion: {in: %w(Male Female Other)}
+  # validates :dob, presence: true
+  # validates :pob, presence: true
 
 
   def avg(ratings)
