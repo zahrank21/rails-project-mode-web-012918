@@ -1,22 +1,52 @@
 <% if @found_shows.length > 0 && @found_actors.length > 0 %>
+<br>
+<div class="container testimonial-group">
+  <div class="row text-center">
   <% @found_shows.each do |show| %>
-    <%= link_to show.title, show %>
+    <div class="col-xs-3">
+    <h4><%= link_to show.title, show %></h4>
     <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %>"></a>
+    </div>
   <% end %>
+  </div>
+</div>
+
+<div class="container testimonial-group">
+  <div class="row text-center">
   <% @found_actors.each do |actor| %>
-    <%= link_to actor.name, actor %>
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %>"></a>
+  <div class="col-xs-3">
+    <h4><%= link_to actor.name, actor %></h4>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class= "img-thumbnail" alt="<%= actor.name %>"></a>
+    </div>
   <% end %>
+  </div>
+</div>
+
 <% elsif @found_shows.length > 0 %>
+<div class="container testimonial-group">
+  <div class="row text-center">
   <% @found_shows.each do |show| %>
-    <%= link_to show.title, show %>
-    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" alt="<%= show.title %>"></a>
+  <div class="col-xs-3">
+    <h4><%= link_to show.title, show %></h4>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" class= "img-thumbnail" alt="<%= show.title %>"></a>
+    </div>
   <% end %>
+  </div>
+</div>
+
 <% elsif @found_actors.length > 0 %>
+<div class="container testimonial-group">
+  <div class="row text-center">
   <% @found_actors.each do |actor| %>
-    <%= link_to actor.name, actor %>
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" alt="<%= actor.name %>"></a>
+    <div class="col-xs-3">
+    <h4><%= link_to actor.name, actor %></h4>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class= "img-thumbnail" alt="<%= actor.name %>"></a>
+    </div>
   <% end %>
+  </div>
+</div>
+
+
 <% else %>
   <h1>No results found for "<%= params[:search] %>"</h1>
 <% end %>
