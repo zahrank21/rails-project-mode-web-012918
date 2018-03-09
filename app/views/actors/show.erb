@@ -3,7 +3,7 @@
 <div class="container">
   <div class="jumbotron">
 <h1> <%=  @actor.name %></h1>
-<img src="<%= @actor.image %>" class= "img-rounded" alt="<%= @actor.name %> Picture" height="200" width="200">
+<img src="<%= @actor.image %>" class= "img-rounded img-fluid" alt="<%= @actor.name %> Picture" height="200" width="200">
 <h3>Rating: <%=  @actor.rating %></h3>
 <% if logged_in? %>
   <%= form_for @actor, url: {controller: :actors, action: :rate} do |f| %>
@@ -46,7 +46,7 @@
   <div class="row text-center">
 <% @actor.shows.each do |show| %>
 <div class="col-xs-4">
-<img src="<%= show.image %>" class="img-circle" alt="<%= show.title %> picture" class="img-circle" height="200" width="150">
+<a href="<%= show_path(show) %>"><img src="<%= show.image %>" class="img-thumbnail img-fluid" alt="<%= show.title %> Picture" height="300" width="200"></a>
 <h3><%= link_to show.title, show %></h3>
 </div>
 <% end %>

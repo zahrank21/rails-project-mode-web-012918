@@ -16,7 +16,7 @@
   <div class="col-xs-4">
   <div class="all_pictures">
     <h3><%= link_to actor.name, actor %></h3>
-    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class= "img-circle" alt="<%= actor.name %> Picture" height= "200" width= "200"></a>
+    <a href="<%= actor_path(actor) %>"><img src="<%= actor.image %>" class= "img-rounded img-fluid" alt="<%= actor.name %> Picture" height= "200" width= "200"></a>
   </div>
   <br>
   <br>
@@ -39,7 +39,7 @@
 <div class="col-xs-4">
   <div class="all_pictures">
     <h3><%= link_to show.title, show %></h3>
-    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" class= "img-rounded" alt="<%= show.title %> Picture"  height= "200" width= "150"></a>
+    <a href="<%= show_path(show) %>"><img src="<%= show.image %>" class= "img-rounded img-fluid" alt="<%= show.title %> Picture"  height= "300" width= "200"></a>
   </div>
   <br>
   <br>
