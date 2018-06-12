@@ -1,34 +1,23 @@
-# Rails Project Mode
+# TVDB
 
-Congratulations, we are starting project mode! This means that you'll spend the rest of the week working in a team to build out a Rails project of your choice. There will be some lectures and new material scheduled throughout the week, but the bulk of the time will be working on your projects.
+A lightweight application for users to find recommendations based on their favorite actors and TV shows. 
 
+## Motivation
 
-Some example project ideas from previous classes:
+As an avid television show enthusiast, I always wanted a lightweight TV Show application to find your favorite actors and tv shows. I wanted to use this information to find personalized recommendations on my viewing habits. 
 
-1. [Regifter](http://regifter.herokuapp.com/) - A gift trading app that lets users upload images and descriptions of unwanted gifts and propose trades with other users.
-2. [Flatiron Postcard](http://www.flatironpostcard.com/) - An app that lets you create and send custom postcards to friends and family
-3. Petster - A social media site for pets
+## Built With:
 
+Ruby on Rails
 
-## Requirements:
+## Installation
 
-1. You should have least five models. You do not have to have all of these built out on day one. But by the end of the week, you should have at least five models.
+Download and in terminal:
 
-2. Some methods in your models. There should be at least twenty methods total in your models. These are to be used to better extract data from your tables. Think Flatiron BnB Lab
+rails s
 
-3. No APIs until you get approval from an instructor.  The reason is because API's oftentimes leads you to learning the specific API really well, but not learning Rails that well.  Rails is a more transferable skill.  So stick with that.
+## Credits
 
-4. Specs - there should be at least 10 specs in your project (five per person). 
-
-5. An analytics page - The main learning goal of this is to get you to write some interesting activerecord queries.
-
-6. No JavaScript. Stay focused on Rails for this project - we'll have plenty of time this semeseter to cover JS topics. 
-
-## Project Task Guidelines
-- come up with idea, model out domain. 
-- add model tests, start building out basic features. Have some functionality built out by the end of the day. 
-- Iterate on the features that you built yesterday. Go from a 'skateboard' version to a scooter or a bicycle. It doesnt' have to be perfect, but it should be working. 
-- start styling/ cleaning up issues. 
-- issue cleanup and final demos. 
+To my instructors at Flatiron! Thank you for all your help.
 
 
