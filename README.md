@@ -26,7 +26,7 @@ As an avid television show enthusiast, I always wanted a lightweight TV Show app
 Clone the source locally:
 
 ```sh
-$ git clone https://github.com/zahrank21/tutr/
+$ git clone https://github.com/zahrank21/rails-project-mode-web-012918/
 $ cd tutr
 $ cd tutr-backend
 ```
