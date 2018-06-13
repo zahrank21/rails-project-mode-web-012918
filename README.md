@@ -20,12 +20,21 @@ As an avid television show enthusiast, I always wanted a lightweight TV Show app
 - [Bootstrap](https://getbootstrap.com/)
 
 
-## Installation
+# Installation
 
-Download and in terminal:
+## For Developers 
+Clone the source locally:
 
-rails s
+```sh
+$ git clone https://github.com/zahrank21/tutr/
+$ cd tutr
+$ cd tutr-backend
+```
+Start Rails Session:
 
+```sh
+$ rails s
+```
 ## Credits
 
 To my instructors at Flatiron! Thank you for all your help.
