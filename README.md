@@ -4,7 +4,7 @@ A lightweight application for users to find recommendations based on their favor
 
 ## Motivation
 
-As an avid television show enthusiast, I always wanted a lightweight TV Show application to find your favorite actors and tv shows. I wanted to use this information to find personalized recommendations on my viewing habits. 
+As an avid television show enthusiast, I always wanted a lightweight TV Show application to find your favorite actors and TV shows. I wanted to use this information to find personalized recommendations on my viewing habits. 
 
 ## Screenshots:
 
@@ -13,7 +13,12 @@ As an avid television show enthusiast, I always wanted a lightweight TV Show app
 
 ## Built With:
 
-Ruby on Rails
+- [Electron](https://electron.atom.io)
+
+- [Ruby on Rails](https://rubyonrails.org/)
+
+- [Bootstrap](https://getbootstrap.com/)
+
 
 ## Installation
 
